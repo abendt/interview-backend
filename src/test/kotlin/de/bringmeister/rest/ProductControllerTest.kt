@@ -35,7 +35,7 @@ class ProductControllerTest {
                 .statusCode(200)
                 .contentType(ContentType.JSON)
                 .log().all()
-                .body("products.name", hasItems("Banana", "Tomato"))
+                .body("name", hasItems("Banana", "Tomato"))
     }
 
     @Test
