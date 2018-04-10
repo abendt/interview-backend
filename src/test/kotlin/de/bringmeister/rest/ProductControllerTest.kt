@@ -58,8 +58,8 @@ class ProductControllerTest {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("product.details.id", equalTo("43b105a0-b5da-401b-a91d-32237ae418e4"))
-                .body("product.prices.size()", equalTo(2))
+                .body("details.id", equalTo("43b105a0-b5da-401b-a91d-32237ae418e4"))
+                .body("prices.size()", equalTo(2))
     }
 
     @Test
@@ -71,9 +71,9 @@ class ProductControllerTest {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("price.cents", equalTo(245))
-                .body("price.currency", equalTo("EUR"))
-                .body("price.unit", equalTo("PIECE"))
+                .body("cents", equalTo(245))
+                .body("currency", equalTo("EUR"))
+                .body("unit", equalTo("PIECE"))
     }
 
     @Test

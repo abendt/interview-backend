@@ -23,7 +23,10 @@ dependencies {
     compile(kotlin("stdlib-jdk8"))
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.5")
-    implementation("ch.qos.logback:logback-classic:1.2.3")
+    compile("io.springfox:springfox-swagger2:2.7.0")
+
+    runtime("io.springfox:springfox-swagger-ui:2.7.0")
+    runtime("ch.qos.logback:logback-classic:1.2.3")
 
     testCompile(kotlin("test-junit"))
     testCompile("net.wuerl.kotlin:assertj-core-kotlin:0.2.1")

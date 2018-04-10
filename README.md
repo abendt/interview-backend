@@ -3,7 +3,11 @@
 To start the service:
 `./gradlew bootRun`
 
-To manually test the service:
+API documentation:
+- http://localhost:8080/swagger-ui.html
+- use the API documentation to explore and try out the API
+
+To manually test the service 
 1. List all products with their master data
 - `curl http://localhost:8080/products`
 

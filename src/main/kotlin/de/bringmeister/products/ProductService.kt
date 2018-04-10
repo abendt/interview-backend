@@ -1,4 +1,4 @@
-package de.bringmeister.rest
+package de.bringmeister.products
 
 import de.bringmeister.domain.Price
 import de.bringmeister.domain.PriceUnit
