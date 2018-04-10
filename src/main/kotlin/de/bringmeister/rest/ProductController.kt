@@ -1,6 +1,8 @@
 package de.bringmeister.rest
 
+import de.bringmeister.domain.Price
 import de.bringmeister.domain.PriceUnit
+import de.bringmeister.domain.ProductWithDetails
 import de.bringmeister.products.PriceRepository
 import de.bringmeister.products.ProductMasterDataRepository
 import org.springframework.http.HttpStatus
@@ -16,7 +18,7 @@ class ProductController(val productService: ProductService) {
     fun listAllProductsWithMasterData() = mapOf("products" to productService.allProducts())
 
     @GetMapping("/products/{productId}", produces = ["application/json"])
-    fun showSingleProductWithMasterDataAndAllPrices(@PathVariable("productId") productId: String): ResponseEntity<Map<String, Any>> {
+    fun showSingleProductWithMasterDataAndAllPrices(@PathVariable("productId") productId: String): ResponseEntity<Map<String, ProductWithDetails>> {
         val result = productService.productWithDetails(productId)
                 ?: return ResponseEntity(HttpStatus.NOT_FOUND)
 
@@ -25,7 +27,7 @@ class ProductController(val productService: ProductService) {
 
     @GetMapping("/products/{productId}/prices/{priceUnit}", produces = ["application/json"])
     fun showSingleProductPriceByProductAndUnit(@PathVariable("productId") productId: String,
-                                               @PathVariable("priceUnit") priceUnit: PriceUnit): ResponseEntity<Map<String, Any>> {
+                                               @PathVariable("priceUnit") priceUnit: PriceUnit): ResponseEntity<Map<String, Price>> {
         val result = productService.productPrice(productId, priceUnit)
                 ?: return ResponseEntity(HttpStatus.NOT_FOUND)
 

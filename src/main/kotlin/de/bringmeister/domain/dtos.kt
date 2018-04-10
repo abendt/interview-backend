@@ -15,3 +15,5 @@ data class Price(@JsonIgnore val id: String,
                  val cents: Int,
                  val currency: String,
                  val unit: PriceUnit)
+
+data class ProductWithDetails(val details: ProductMasterData, val prices: List<Price>)

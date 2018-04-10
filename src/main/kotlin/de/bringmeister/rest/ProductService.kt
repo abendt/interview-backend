@@ -3,6 +3,7 @@ package de.bringmeister.rest
 import de.bringmeister.domain.Price
 import de.bringmeister.domain.PriceUnit
 import de.bringmeister.domain.ProductMasterData
+import de.bringmeister.domain.ProductWithDetails
 import de.bringmeister.products.PriceRepository
 import de.bringmeister.products.ProductMasterDataRepository
 import org.springframework.stereotype.Service
@@ -30,4 +31,3 @@ class ProductService(val productMasterDataRepository: ProductMasterDataRepositor
     }
 }
 
-data class ProductWithDetails(val details: ProductMasterData, val prices: List<Price>)
