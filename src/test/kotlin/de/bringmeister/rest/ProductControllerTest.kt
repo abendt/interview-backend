@@ -58,7 +58,7 @@ class ProductControllerTest {
                 .then()
                 .log().all()
                 .statusCode(200)
-                .body("product.masterdata.id", equalTo("43b105a0-b5da-401b-a91d-32237ae418e4"))
+                .body("product.details.id", equalTo("43b105a0-b5da-401b-a91d-32237ae418e4"))
                 .body("product.prices.size()", equalTo(2))
     }
 

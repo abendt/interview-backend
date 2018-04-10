@@ -10,31 +10,26 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class ProductController(val productMasterDataRepository: ProductMasterDataRepository, val priceRepository: PriceRepository) {
+class ProductController(val productService: ProductService) {
 
     @GetMapping("/products", produces = ["application/json"])
-    fun listAllProductsWithMasterData() = mapOf("products" to productMasterDataRepository.findAllMasterData())
+    fun listAllProductsWithMasterData() = mapOf("products" to productService.allProducts())
 
     @GetMapping("/products/{productId}", produces = ["application/json"])
     fun showSingleProductWithMasterDataAndAllPrices(@PathVariable("productId") productId: String): ResponseEntity<Map<String, Any>> {
-        val masterData = productMasterDataRepository.findMasterDataById(productId)
+        val result = productService.productWithDetails(productId)
                 ?: return ResponseEntity(HttpStatus.NOT_FOUND)
 
-        val pricesBySku = priceRepository.findPricesBySku(masterData.stockKeepingUnit)
-        val product = mapOf("masterdata" to masterData, "prices" to pricesBySku)
-
-        return ResponseEntity(mapOf("product" to product), HttpStatus.OK)
+        return ResponseEntity(mapOf("product" to result), HttpStatus.OK)
     }
 
     @GetMapping("/products/{productId}/prices/{priceUnit}", produces = ["application/json"])
     fun showSingleProductPriceByProductAndUnit(@PathVariable("productId") productId: String,
                                                @PathVariable("priceUnit") priceUnit: PriceUnit): ResponseEntity<Map<String, Any>> {
-        val masterData = productMasterDataRepository.findMasterDataById(productId)
+        val result = productService.productPrice(productId, priceUnit)
                 ?: return ResponseEntity(HttpStatus.NOT_FOUND)
 
-        val price = priceRepository.findPriceBySkuAndUnit(masterData.stockKeepingUnit, priceUnit)
-
-        val response = mapOf("price" to price)
+        val response = mapOf("price" to result)
 
         return ResponseEntity(response, HttpStatus.OK)
     }
