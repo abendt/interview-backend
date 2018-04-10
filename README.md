@@ -1,3 +1,5 @@
+![Travis](https://travis-ci.org/abendt/interview-backend.svg?branch=master)
+
 Please implement a service that reads in the provided xml and json files and exposes the information via a RESTful API.
 
 File structure:
@@ -27,3 +29,4 @@ To manually test the service:
 
 3. Show single product price for one product and specific unit
 `curl http://localhost:8080/products/b867525e-53f8-4864-8990-5f13a5dd9d14/prices/PACKAGE`
+
