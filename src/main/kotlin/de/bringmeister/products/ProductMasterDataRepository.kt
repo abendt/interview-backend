@@ -17,7 +17,7 @@ class ProductMasterDataRepository {
     lateinit var masterData: Map<String, ProductMasterData>
 
     @PostConstruct
-    internal fun loadAllProducts() {
+    fun loadAllProducts() {
 
         val context = JAXBContext.newInstance(XmlProducts::class.java)
 

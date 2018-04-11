@@ -5,9 +5,6 @@ import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import de.bringmeister.domain.ProductMasterData
-import de.bringmeister.products.PriceRepository
-import de.bringmeister.products.ProductMasterDataRepository
-import de.bringmeister.products.ProductService
 import org.assertj.core.api.KotlinAssertions
 import org.junit.Test
 import org.junit.runner.RunWith
